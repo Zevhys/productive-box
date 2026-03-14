@@ -139,7 +139,6 @@ interface Edge {
     gist_id: `${process.env.GIST_ID}`,
     files: {
       [filename]: {
-        filename: morning + daytime > evening + night ? "I'm an early 🐤" : "I'm a night 🦉",
         content: lines.join('\n'),
       },
     },
