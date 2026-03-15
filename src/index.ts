@@ -139,6 +139,7 @@ interface Edge {
     gist_id: `${process.env.GIST_ID}`,
     files: {
       [filename]: {
+        filename: "Consistent ✅",
         content: lines.join('\n'),
       },
     },
