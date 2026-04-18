@@ -135,7 +135,7 @@ interface Edge {
   }
 
   const filename = Object.keys(gist.data.files)[0];
-  const gistTitle = 'Are you an early 🐤 or a night 🦉?';
+  const gistTitle = 'Consistent ✅';
   await octokit.gists.update({
     gist_id: `${process.env.GIST_ID}`,
     files: {
