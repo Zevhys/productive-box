@@ -106,17 +106,21 @@ interface Edge {
     { label: '🌙 Night', commits: night },
   ];
 
-  const lines = oneDay.reduce((prev, cur) => {
-    const percent = (cur.commits / sum) * 100;
+  const commitLabels = oneDay.map((entry) => `${entry.commits.toString().padStart(5)} commits`);
+  const labelWidth = Math.max(10, ...oneDay.map((entry) => entry.label.length));
+  const commitWidth = Math.max(14, ...commitLabels.map((label) => label.length));
+
+  const lines = oneDay.map((entry, index) => {
+    const percent = (entry.commits / sum) * 100;
     const line = [
-      `${cur.label}`.padEnd(10),
-      `${cur.commits.toString().padStart(5)} commits`.padEnd(14),
+      `${entry.label}`.padEnd(labelWidth),
+      commitLabels[index].padEnd(commitWidth),
       generateBarChart(percent, 21),
       String(percent.toFixed(1)).padStart(5) + '%',
     ];
 
-    return [...prev, line.join(' ')];
-  }, [] as string[]);
+    return line.join(' ');
+  });
 
   /**
    * Finally, write into gist
